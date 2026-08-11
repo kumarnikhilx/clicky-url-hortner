@@ -4,6 +4,8 @@ import connectDB from "./src/config/mongo.config.js" ;
 import UrlSchema from "./src/models/shortUrl.model.js";
 import shortUrl from "./src/routes/shortUrl.route.js"
 import dotenv from "dotenv";
+import { handleRedirect } from './src/controllers/shortUrl.controller.js';
+import { errorHandler } from './src/utils/errorHandler.js';
 
 dotenv.config();
 
@@ -17,17 +19,10 @@ app.use(express.urlencoded({extended:true}));
 // creating the url shorter 
 app.use("/api",shortUrl);
 //redirection 
+app.get("/:id",handleRedirect);  
 
-app.get("/:id",async(req,res)=>{
-    const {id}=req.params;
-    const url=await UrlSchema.findOne({ shortUrl:id });
-    if(!url){
-        return res.status(404).send("Url not found");
-    }
-    url.click++;
-    await url.save();
-    res.redirect(url.originalUrl); // its redirecting the mapped shortUrl with the origalUrl.
-})  
+// Global error handling middleware
+app.use(errorHandler);
 
 app.listen(3000,()=>{
     connectDB();

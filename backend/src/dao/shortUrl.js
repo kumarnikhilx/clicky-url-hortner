@@ -21,3 +21,14 @@ export const saveShortUrl=async(orignalUrl,shortUrl,userId)=>{
     //     shortUrl:short_url
     // });
 }
+
+
+export const getShortUrl=async(id)=>{
+    const url=await UrlSchema.findOne({ shortUrl:id });
+    if(!url){
+        return null;
+    }
+    url.click++;
+    await url.save();
+    return url.originalUrl; 
+}
