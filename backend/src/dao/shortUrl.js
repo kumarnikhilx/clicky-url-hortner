@@ -32,3 +32,7 @@ export const getShortUrl=async(id)=>{
     await url.save();
     return url.originalUrl; 
 }
+
+export const getCustomShortUrl = async (slug) => {
+    return await UrlSchema.findOne({shortUrl:slug});
+}
