@@ -21,7 +21,7 @@ const app=express();
 app.set('trust proxy', 1);
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://clicky-chi.vercel.app', process.env.FRONTEND_URL].filter(Boolean),
+    origin: [ process.env.FRONTEND_URL].filter(Boolean),
     credentials: true
 }));
 
