@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
@@ -9,10 +10,9 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
+import HistoryPage from './pages/HistoryPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-// App defines all routes. The AuthProvider wraps everything so that
-// every page and component can access auth state via useAuth().
 function App() {
   return (
     <BrowserRouter>
@@ -23,11 +23,12 @@ function App() {
           toastOptions={{
             duration: 3500,
             style: {
-              background: '#1e293b',
-              color: '#f1f5f9',
-              border: '1px solid #334155',
-              borderRadius: '10px',
-              fontSize: '14px',
+              background: '#0f172a',
+              color: '#f8fafc',
+              border: '1px solid #1e293b',
+              borderRadius: '12px',
+              fontSize: '13px',
+              boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)',
             },
             success: {
               iconTheme: { primary: '#6366f1', secondary: '#fff' },
@@ -38,17 +39,17 @@ function App() {
           }}
         />
 
-        {/* Navbar is always visible */}
+        {/* Navbar */}
         <Navbar />
 
-        {/* Page content */}
+        {/* App Routes */}
         <Routes>
           {/* Public routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
 
-          {/* Protected route — redirects to /login if not authenticated */}
+          {/* Protected routes */}
           <Route
             path="/dashboard"
             element={
@@ -57,8 +58,16 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/history"
+            element={
+              <ProtectedRoute>
+                <HistoryPage />
+              </ProtectedRoute>
+            }
+          />
 
-          {/* 404 — catch all unmatched routes */}
+          {/* 404 Route */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </AuthProvider>

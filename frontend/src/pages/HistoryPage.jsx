@@ -1,0 +1,103 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { History, RefreshCw, Link2, MousePointerClick, Search } from 'lucide-react';
+import toast from 'react-hot-toast';
+import { getUserUrls } from '../services/urlService';
+import UrlList from '../components/UrlList';
+
+const HistoryPage = () => {
+  const [urls, setUrls] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const fetchUrls = useCallback(async () => {
+    try {
+      setLoading(true);
+      const data = await getUserUrls();
+      setUrls(data.urls || []);
+    } catch (err) {
+      const message = err.response?.data?.message || 'Failed to load URL history.';
+      toast.error(message);
+      console.error('History fetch error:', err);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchUrls();
+  }, [fetchUrls]);
+
+  // Compute stats
+  const totalClicks = urls.reduce((acc, curr) => acc + (curr.click || 0), 0);
+
+  // Filter urls based on search
+  const filteredUrls = urls.filter((item) => {
+    const q = searchQuery.toLowerCase();
+    return (
+      (item.originalUrl && item.originalUrl.toLowerCase().includes(q)) ||
+      (item.shortUrl && item.shortUrl.toLowerCase().includes(q))
+    );
+  });
+
+  return (
+    <main className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
+      {/* Header & Stats Banner */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
+        <div className="flex items-center gap-3.5">
+          <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-indigo-600/10 border border-indigo-500/20 text-indigo-400">
+            <History className="w-6 h-6" />
+          </div>
+          <div>
+            <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Link History
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-400">
+              View, search and manage all your shortened links.
+            </p>
+          </div>
+        </div>
+
+        {/* Stats Pill */}
+        <div className="flex items-center gap-4 bg-slate-900/60 border border-slate-800 rounded-xl px-4 py-2 text-xs">
+          <div className="flex items-center gap-1.5 text-slate-300">
+            <Link2 className="w-4 h-4 text-indigo-400" />
+            <span><strong className="text-white font-semibold">{urls.length}</strong> links</span>
+          </div>
+          <div className="w-px h-4 bg-slate-800" />
+          <div className="flex items-center gap-1.5 text-slate-300">
+            <MousePointerClick className="w-4 h-4 text-emerald-400" />
+            <span><strong className="text-white font-semibold">{totalClicks}</strong> total clicks</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Search & Refresh Toolbar */}
+      <div className="flex items-center justify-between gap-3 mb-6">
+        <div className="relative flex-1 max-w-sm">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search links..."
+            className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-100 placeholder:text-slate-500 outline-none focus:border-indigo-500 transition-all"
+          />
+        </div>
+
+        <button
+          onClick={fetchUrls}
+          disabled={loading}
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-800 bg-slate-900/80 hover:bg-slate-800 text-xs font-medium text-slate-300 hover:text-white transition-all cursor-pointer disabled:opacity-50"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+          <span>Refresh</span>
+        </button>
+      </div>
+
+      {/* URL History List */}
+      <UrlList urls={filteredUrls} loading={loading} />
+    </main>
+  );
+};
+
+export default HistoryPage;

@@ -20,5 +20,5 @@ export const createUser = async (name, email, password) => {
 }
 
 export const getAllUserUrlsDao = async (id) => {
-    return await UrlModel.find({user:id})
+    return await UrlModel.find({ $or: [{ user_id: id }, { user: id }] }).sort({ _id: -1 })
 }
