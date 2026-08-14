@@ -45,17 +45,17 @@ const UrlForm = ({ onUrlCreated }) => {
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        {/* Main URL Input */}
-        <div className="flex flex-col sm:flex-row items-stretch gap-2 bg-slate-900 border border-slate-700/80 rounded-2xl p-2 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all shadow-lg">
-          <div className="flex items-center gap-3 px-3 py-1 flex-1">
-            <Link2 className="w-5 h-5 text-slate-500 shrink-0" />
+        {/* Main URL Input Container */}
+        <div className="flex flex-col sm:flex-row items-stretch gap-2 bg-slate-900/90 border border-slate-700/80 rounded-2xl p-2 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all shadow-lg">
+          <div className="flex items-center gap-3 px-3 py-1 flex-1 bg-transparent">
+            <Link2 className="w-5 h-5 text-slate-400 shrink-0" />
             <input
               id="url-input"
               type="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Paste your long URL here..."
-              className="w-full bg-transparent border-none outline-none text-slate-100 text-sm placeholder:text-slate-500"
+              className="w-full bg-transparent border-0 outline-none text-white font-medium text-sm placeholder:text-slate-500 focus:outline-none focus:ring-0 ring-0 selection:bg-indigo-500 selection:text-white"
               disabled={loading}
               required
             />
@@ -93,7 +93,7 @@ const UrlForm = ({ onUrlCreated }) => {
             </button>
 
             {showSlugInput && (
-              <div className="flex items-center bg-slate-900 border border-slate-800 rounded-xl overflow-hidden text-xs">
+              <div className="flex items-center bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden text-xs">
                 <span className="px-3.5 py-2.5 bg-slate-800/80 text-slate-400 border-r border-slate-800 font-mono select-none">
                   {import.meta.env.VITE_API_URL.replace('/api', '')}/
                 </span>
@@ -103,7 +103,7 @@ const UrlForm = ({ onUrlCreated }) => {
                   value={customSlug}
                   onChange={(e) => setCustomSlug(e.target.value)}
                   placeholder="custom-slug"
-                  className="flex-1 bg-transparent px-3 py-2 text-slate-100 outline-none placeholder:text-slate-600 font-mono"
+                  className="flex-1 bg-transparent px-3 py-2 text-white outline-none border-0 placeholder:text-slate-600 font-mono text-xs focus:outline-none focus:ring-0 ring-0"
                   disabled={loading}
                 />
               </div>

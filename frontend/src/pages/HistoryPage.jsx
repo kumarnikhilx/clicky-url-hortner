@@ -80,7 +80,7 @@ const HistoryPage = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search links..."
-            className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-100 placeholder:text-slate-500 outline-none focus:border-indigo-500 transition-all"
+            className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white font-medium placeholder:text-slate-500 outline-none focus:border-indigo-500 transition-all"
           />
         </div>
 
