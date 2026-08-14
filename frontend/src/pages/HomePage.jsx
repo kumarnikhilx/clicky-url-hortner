@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Link2, Zap, Shield, BarChart3, History, ArrowRight } from 'lucide-react';
+import { Zap, Lock, Infinity as InfinityIcon, Target, History, ArrowRight } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { getUserUrls } from '../services/urlService';
 import UrlForm from '../components/UrlForm';
 import UrlList from '../components/UrlList';
+import Footer from '../components/Footer';
 
 const HomePage = () => {
   const { isAuthenticated } = useAuth();
@@ -35,74 +36,76 @@ const HomePage = () => {
   };
 
   return (
-    <main className="min-h-[calc(100vh-4rem)] flex flex-col items-center px-4 py-10 sm:py-16">
-      <div className="w-full max-w-2xl text-center flex flex-col items-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-indigo-500/30 bg-indigo-950/40 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
-          <Zap className="w-3.5 h-3.5 text-indigo-400" />
-          <span>Fast, free & simple</span>
-        </div>
+    <div className="min-h-screen flex flex-col justify-between">
+      <main className="flex-1 flex flex-col items-center justify-center px-4 py-16 sm:py-24">
+        <div className="w-full max-w-2xl text-center flex flex-col items-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-900/60 bg-[#06180f]/80 text-emerald-400 text-[11px] font-semibold tracking-widest uppercase mb-8 shadow-sm">
+            <Zap className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
+            <span>Fast, Free & Simple</span>
+          </div>
 
-        {/* Heading */}
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-          Shorten any link, <br className="hidden sm:block" />
-          <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            share it everywhere
-          </span>
-        </h1>
+          {/* Editorial Serif Heading */}
+          <h1 className="font-editorial text-4xl sm:text-6xl font-medium tracking-tight text-emerald-50 mb-4 leading-tight">
+            Shorten your reach.
+          </h1>
 
-        {/* Subtitle */}
-        <p className="text-sm sm:text-base text-slate-400 max-w-lg mb-8 leading-relaxed">
-          {isAuthenticated
-            ? 'Create custom short links and track your clicks with ease.'
-            : 'Paste your long URL below and generate a short, easy-to-share link in seconds. No account required.'}
-        </p>
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base text-emerald-200/60 max-w-lg mb-10 font-normal leading-relaxed">
+            A quiet space for your digital connections.
+          </p>
 
-        {/* Form Container Card */}
-        <div className="w-full p-5 sm:p-7 rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur-xl shadow-2xl mb-8 text-left">
-          <UrlForm onUrlCreated={handleUrlCreated} />
-        </div>
+          {/* Main Card Container */}
+          <div className="w-full p-6 sm:p-8 rounded-2xl border border-emerald-900/50 bg-[#071610]/90 backdrop-blur-xl shadow-2xl mb-10 text-left">
+            <UrlForm onUrlCreated={handleUrlCreated} />
+          </div>
 
-        {/* Logged in: History preview section */}
-        {isAuthenticated ? (
-          <div className="w-full text-left mt-4">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <History className="w-4 h-4 text-indigo-400" />
-                <h2 className="text-sm font-bold text-slate-200 uppercase tracking-wider">
-                  Recent Links
-                </h2>
+          {/* Logged-in recent links section OR public feature badges */}
+          {isAuthenticated ? (
+            <div className="w-full text-left mt-2">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <History className="w-4 h-4 text-emerald-400" />
+                  <h2 className="text-xs font-bold text-emerald-300 uppercase tracking-widest">
+                    Recent Links
+                  </h2>
+                </div>
+                <Link
+                  to="/history"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                >
+                  <span>View all</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
-              <Link
-                to="/history"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
-              >
-                <span>View all</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
 
-            <UrlList urls={urls.slice(0, 3)} loading={loadingUrls} />
-          </div>
-        ) : (
-          /* Public feature pills */
-          <div className="flex items-center justify-center gap-6 sm:gap-8 flex-wrap text-xs text-slate-400 font-medium">
-            <div className="flex items-center gap-1.5">
-              <Link2 className="w-4 h-4 text-indigo-400" />
-              <span>Instant shorten</span>
+              <UrlList urls={urls.slice(0, 3)} loading={loadingUrls} />
             </div>
-            <div className="flex items-center gap-1.5">
-              <Shield className="w-4 h-4 text-indigo-400" />
-              <span>No account required</span>
+          ) : (
+            /* Bottom 3 Feature Pills matching screenshot */
+            <div className="flex items-center justify-center gap-4 sm:gap-6 flex-wrap text-xs text-emerald-500/70 font-medium">
+              <div className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
+                <Lock className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Private</span>
+              </div>
+              <span className="text-emerald-900">•</span>
+              <div className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
+                <InfinityIcon className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Persistent</span>
+              </div>
+              <span className="text-emerald-900">•</span>
+              <div className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
+                <Target className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Precise</span>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <BarChart3 className="w-4 h-4 text-indigo-400" />
-              <span>Click tracking</span>
-            </div>
-          </div>
-        )}
-      </div>
-    </main>
+          )}
+        </div>
+      </main>
+
+      {/* Footer matching screenshot */}
+      <Footer />
+    </div>
   );
 };
 
