@@ -17,9 +17,24 @@ dotenv.config();
 
 const app=express();
 
-// Configure CORS to allow requests from the frontend with cookies
+// Trust proxy for Render reverse proxy (required for express-rate-limit & secure cookies)
+app.set('trust proxy', 1);
+
+// Configure CORS to allow requests from both local dev and production frontend
+const allowedOrigins = [
+    'http://localhost:5173',
+    process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps, curl, or server-to-server)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true
 }));
 
@@ -42,7 +57,8 @@ app.use("/api",auth_routes)
 // Global error handling middleware
 app.use(errorHandler);
 
-app.listen(3000,()=>{
+const PORT = process.env.PORT || 3000;
+app.listen(PORT,()=>{
     connectDB();
-    console.log("listening to port",3000);
+    console.log("listening to port",PORT);
 })

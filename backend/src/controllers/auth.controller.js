@@ -5,10 +5,11 @@ export const register_user = WrapAsync(async (req, res) => {
     const { name, email, password } = req.body;
     const { token, user } = await registerUser(name, email, password);
     
+    const isProduction = process.env.NODE_ENV === 'production';
     res.cookie('accessToken', token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        secure: isProduction,
+        sameSite: isProduction ? 'none' : 'lax',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
@@ -19,10 +20,11 @@ export const login_user = WrapAsync(async (req, res) => {
     const { email, password } = req.body;
     const { token, user } = await loginUser(email, password);
     
+    const isProduction = process.env.NODE_ENV === 'production';
     res.cookie('accessToken', token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        secure: isProduction,
+        sameSite: isProduction ? 'none' : 'lax',
         maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -30,7 +32,12 @@ export const login_user = WrapAsync(async (req, res) => {
 });
 
 export const logout_user = WrapAsync(async (req, res) => {
-    res.clearCookie('accessToken');
+    const isProduction = process.env.NODE_ENV === 'production';
+    res.clearCookie('accessToken', {
+        httpOnly: true,
+        secure: isProduction,
+        sameSite: isProduction ? 'none' : 'lax'
+    });
     res.status(200).json({ message: "User logged out successfully" });
 });
 
