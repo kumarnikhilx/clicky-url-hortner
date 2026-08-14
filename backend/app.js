@@ -20,22 +20,35 @@ const app=express();
 // Trust proxy for Render reverse proxy (required for express-rate-limit & secure cookies)
 app.set('trust proxy', 1);
 
-// Configure CORS to allow requests from both local dev and production frontend
+// Configure CORS to allow requests from local dev, Vercel frontend, and custom FRONTEND_URL
 const allowedOrigins = [
     'http://localhost:5173',
+    'http://localhost:3000',
+    'https://clicky-chi.vercel.app',
     process.env.FRONTEND_URL
 ].filter(Boolean);
 
 app.use(cors({
     origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps, curl, or server-to-server)
-        if (!origin || allowedOrigins.includes(origin)) {
+        // Allow requests with no origin (like mobile apps, curl, or Postman)
+        if (!origin) return callback(null, true);
+
+        // Normalize origin (remove trailing slash)
+        const cleanOrigin = origin.replace(/\/$/, '');
+
+        // Check exact match or any .vercel.app deployment
+        const isAllowed = allowedOrigins.some(o => o.replace(/\/$/, '') === cleanOrigin) ||
+                          /\.vercel\.app$/.test(new URL(origin).hostname);
+
+        if (isAllowed) {
             callback(null, true);
         } else {
-            callback(new Error('Not allowed by CORS'));
+            callback(null, false);
         }
     },
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
 }));
 
 //used for body parser or to read form data. 
