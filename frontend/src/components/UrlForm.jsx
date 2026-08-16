@@ -45,17 +45,17 @@ const UrlForm = ({ onUrlCreated }) => {
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        {/* Main URL Input Box */}
-        <div className="flex flex-col sm:flex-row items-stretch gap-2.5 bg-[#091a13] border border-emerald-900/50 rounded-xl p-2 focus-within:border-emerald-500/60 focus-within:ring-2 focus-within:ring-emerald-500/10 transition-all shadow-lg">
+        {/* Main URL Input Box matching screenshot */}
+        <div className="flex flex-col sm:flex-row items-stretch gap-2.5 bg-[#141925] border border-slate-800 rounded-xl p-2 focus-within:border-indigo-400/50 focus-within:ring-2 focus-within:ring-indigo-400/10 transition-all shadow-xl">
           <div className="flex items-center gap-3 px-3 py-1.5 flex-1 bg-transparent">
-            <Link2 className="w-5 h-5 text-emerald-400/80 shrink-0" />
+            <Link2 className="w-5 h-5 text-slate-400 shrink-0" />
             <input
               id="url-input"
               type="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Paste your long URL here..."
-              className="w-full bg-transparent border-0 outline-none text-emerald-50 font-normal text-sm placeholder:text-emerald-700/60 focus:outline-none focus:ring-0 ring-0 selection:bg-emerald-500 selection:text-black"
+              className="w-full bg-transparent border-0 outline-none text-slate-100 font-normal text-sm placeholder:text-slate-500 focus:outline-none focus:ring-0 ring-0 selection:bg-indigo-400 selection:text-black"
               disabled={loading}
               required
             />
@@ -64,7 +64,7 @@ const UrlForm = ({ onUrlCreated }) => {
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#34d399] hover:bg-[#2ee59d] active:bg-[#22c55e] text-[#051d10] text-xs font-bold tracking-wide shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shrink-0"
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#c7d2fe] hover:bg-[#b4c6fc] active:bg-[#a5b4fc] text-[#0b0e14] text-xs font-bold tracking-wide shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shrink-0"
           >
             {loading ? (
               <>
@@ -85,7 +85,7 @@ const UrlForm = ({ onUrlCreated }) => {
           <div className="flex flex-col gap-2 pt-1">
             <button
               type="button"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-500/70 hover:text-emerald-300 transition-colors w-fit cursor-pointer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-slate-200 transition-colors w-fit cursor-pointer"
               onClick={() => setShowSlugInput(!showSlugInput)}
             >
               {showSlugInput ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -93,8 +93,8 @@ const UrlForm = ({ onUrlCreated }) => {
             </button>
 
             {showSlugInput && (
-              <div className="flex items-center bg-[#091a13] border border-emerald-900/50 rounded-xl overflow-hidden text-xs">
-                <span className="px-3.5 py-2.5 bg-[#0e271d] text-emerald-500/80 border-r border-emerald-900/50 font-mono select-none">
+              <div className="flex items-center bg-[#141925] border border-slate-800 rounded-xl overflow-hidden text-xs">
+                <span className="px-3.5 py-2.5 bg-[#1b2232] text-slate-400 border-r border-slate-800 font-mono select-none">
                   {import.meta.env.VITE_API_URL.replace('/api', '')}/
                 </span>
                 <input
@@ -103,7 +103,7 @@ const UrlForm = ({ onUrlCreated }) => {
                   value={customSlug}
                   onChange={(e) => setCustomSlug(e.target.value)}
                   placeholder="custom-slug"
-                  className="flex-1 bg-transparent px-3 py-2 text-emerald-50 outline-none border-0 placeholder:text-emerald-700/60 font-mono text-xs focus:outline-none focus:ring-0 ring-0"
+                  className="flex-1 bg-transparent px-3 py-2 text-slate-100 outline-none border-0 placeholder:text-slate-600 font-mono text-xs focus:outline-none focus:ring-0 ring-0"
                   disabled={loading}
                 />
               </div>

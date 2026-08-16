@@ -2,10 +2,10 @@
 
 @layer base {
   body {
-    background-color: #040e09;
-    background-image: radial-gradient(circle, rgba(34, 197, 94, 0.12) 1.2px, transparent 1.2px);
-    background-size: 32px 32px;
-    color: #e6f4ea;
+    background-color: #080b13;
+    background-image: radial-gradient(circle, rgba(165, 180, 252, 0.28) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    color: #f1f5f9;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -21,7 +21,7 @@
   input:-webkit-autofill:focus, 
   input:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: #e6f4ea !important;
+    -webkit-text-fill-color: #f8fafc !important;
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: inset 0 0 20px 20px transparent !important;
   }

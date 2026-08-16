@@ -13,17 +13,17 @@ const ShortUrlResult = ({ shortUrl }) => {
   };
 
   return (
-    <div className="mt-4 p-4 rounded-xl border border-emerald-900/60 bg-[#081a12]/80 backdrop-blur-sm animate-in fade-in slide-in-from-top-2 duration-300">
+    <div className="mt-4 p-4 rounded-xl border border-slate-800/80 bg-[#121723]/90 backdrop-blur-sm animate-in fade-in slide-in-from-top-2 duration-300">
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-400/90 mb-1">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-indigo-300 mb-1">
             Shortened Link
           </p>
           <a
             href={shortUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-emerald-100 hover:text-emerald-300 transition-colors truncate block"
+            className="text-sm font-medium text-slate-100 hover:text-indigo-300 transition-colors truncate block font-mono"
           >
             {shortUrl}
           </a>
@@ -35,7 +35,7 @@ const ShortUrlResult = ({ shortUrl }) => {
             className={`p-2 rounded-lg border text-sm font-medium transition-all cursor-pointer ${
               copied
                 ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300'
-                : 'bg-[#0b2419] border-emerald-900/60 text-emerald-300 hover:bg-emerald-900/40 hover:text-emerald-100'
+                : 'bg-[#182030] border-slate-700/60 text-slate-300 hover:bg-slate-700/50 hover:text-white'
             }`}
             title="Copy to clipboard"
           >
@@ -46,7 +46,7 @@ const ShortUrlResult = ({ shortUrl }) => {
             href={shortUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-lg border border-emerald-900/60 bg-[#0b2419] text-emerald-300 hover:bg-emerald-900/40 hover:text-emerald-100 transition-all"
+            className="p-2 rounded-lg border border-slate-700/60 bg-[#182030] text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all"
             title="Open in new tab"
           >
             <ExternalLink className="w-4 h-4" />
