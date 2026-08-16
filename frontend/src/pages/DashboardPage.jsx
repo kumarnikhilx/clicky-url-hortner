@@ -37,16 +37,16 @@ const DashboardPage = () => {
   return (
     <main className="max-w-4xl mx-auto w-full px-4 py-8 sm:py-12">
       {/* Welcome Banner */}
-      <div className="flex items-center justify-between gap-4 mb-8 pb-6 border-b border-[#3B262F]/50">
+      <div className="flex items-center justify-between gap-4 mb-8 pb-6 border-b border-[#B2E2EB]">
         <div className="flex items-center gap-3.5">
-          <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#1E161A] border border-[#3B262F] text-[#EBB369] shadow-inner">
+          <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#FFFFFF] border border-[#B2E2EB] text-[#0083A0] shadow-sm">
             <LayoutDashboard className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="font-editorial text-2xl sm:text-3xl font-semibold text-[#F9EDE4] tracking-tight">
+            <h1 className="font-editorial text-2xl sm:text-3xl font-bold text-[#062E3B] tracking-tight">
               Welcome back, {user?.name?.split(' ')[0]}!
             </h1>
-            <p className="text-xs sm:text-sm text-[#EBB369]/80">
+            <p className="text-xs sm:text-sm text-[#4A7A85] font-medium">
               Create and manage all your shortened links.
             </p>
           </div>
@@ -54,23 +54,23 @@ const DashboardPage = () => {
       </div>
 
       {/* URL Shortener Form Section */}
-      <section className="p-6 sm:p-8 rounded-2xl border border-[#3B262F] bg-[#1E161A]/90 backdrop-blur-xl shadow-xl shadow-[#140F12]/50 mb-10">
+      <section className="p-6 sm:p-8 rounded-2xl border border-[#B2E2EB] bg-[#FFFFFF]/95 backdrop-blur-xl shadow-xl shadow-[#00A8CC]/10 mb-10">
         <UrlForm onUrlCreated={handleUrlCreated} />
       </section>
 
       {/* Link List Section */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm sm:text-base font-bold text-[#F9EDE4] uppercase tracking-widest">
+          <h2 className="text-sm sm:text-base font-bold text-[#062E3B] uppercase tracking-widest">
             Your Links
           </h2>
           <button
             onClick={fetchUrls}
             disabled={loadingUrls}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#3B262F] bg-[#1E161A] hover:bg-[#2B1F24] text-xs font-semibold text-[#EBB369] hover:text-[#F9EDE4] transition-all cursor-pointer disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#B2E2EB] bg-[#FFFFFF] hover:bg-[#DDF2F5] text-xs font-semibold text-[#0083A0] hover:text-[#005C70] transition-all cursor-pointer disabled:opacity-50 shadow-sm"
             title="Refresh links"
           >
-            <RefreshCw className={`w-3.5 h-3.5 text-[#EBB369] ${loadingUrls ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 text-[#00A8CC] ${loadingUrls ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
           </button>
         </div>

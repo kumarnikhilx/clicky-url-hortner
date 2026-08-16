@@ -23,12 +23,12 @@ const Navbar = () => {
   const isHistory = location.pathname === '/history';
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#140F12]/80 backdrop-blur-md border-b border-[#3B262F]/50">
+    <header className="sticky top-0 z-40 w-full bg-[#EBF6F8]/90 backdrop-blur-md border-b border-[#B2E2EB]">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 h-20 flex items-center justify-between">
         {/* Left: Brand Logo */}
-        <Link to="/" className="flex items-center gap-2 text-[#EBB369] group">
-          <Link2 className="w-5 h-5 text-[#EBB369] group-hover:rotate-12 transition-transform duration-300" />
-          <span className="font-editorial text-xl font-semibold tracking-wide text-[#F9EDE4]">
+        <Link to="/" className="flex items-center gap-2 text-[#0083A0] group">
+          <Link2 className="w-5 h-5 text-[#00A8CC] group-hover:rotate-12 transition-transform duration-300" />
+          <span className="font-editorial text-xl font-bold tracking-wide text-[#062E3B]">
             Clicky
           </span>
         </Link>
@@ -39,8 +39,8 @@ const Navbar = () => {
             to="/"
             className={`transition-colors pb-1 ${
               isHome
-                ? 'text-[#F9EDE4] border-b-2 border-[#EBB369] font-bold'
-                : 'text-[#EBB369]/70 hover:text-[#F9EDE4]'
+                ? 'text-[#062E3B] border-b-2 border-[#00A8CC] font-bold'
+                : 'text-[#4A7A85] hover:text-[#062E3B]'
             }`}
           >
             Home
@@ -49,8 +49,8 @@ const Navbar = () => {
             to={isAuthenticated ? "/history" : "/login"}
             className={`transition-colors pb-1 ${
               isHistory
-                ? 'text-[#F9EDE4] border-b-2 border-[#EBB369] font-bold'
-                : 'text-[#EBB369]/70 hover:text-[#F9EDE4]'
+                ? 'text-[#062E3B] border-b-2 border-[#00A8CC] font-bold'
+                : 'text-[#4A7A85] hover:text-[#062E3B]'
             }`}
           >
             History
@@ -62,20 +62,20 @@ const Navbar = () => {
           {isAuthenticated ? (
             <>
               {/* User capsule */}
-              <div className="flex items-center gap-2 pl-2 pr-3 py-1 rounded-full bg-[#1E161A] border border-[#3B262F] text-xs text-[#F9EDE4]">
+              <div className="flex items-center gap-2 pl-2 pr-3 py-1 rounded-full bg-[#DDF2F5] border border-[#B2E2EB] text-xs text-[#062E3B]">
                 {user?.avatar ? (
                   <img src={user.avatar} alt={user.name} className="w-5 h-5 rounded-full object-cover" />
                 ) : (
-                  <div className="w-5 h-5 rounded-full bg-[#2E1E24] flex items-center justify-center text-[#EBB369]">
+                  <div className="w-5 h-5 rounded-full bg-[#C6E9EF] flex items-center justify-center text-[#0083A0]">
                     <User className="w-3 h-3" />
                   </div>
                 )}
-                <span className="font-medium max-w-[120px] truncate text-[#F9EDE4]">{user?.name}</span>
+                <span className="font-medium max-w-[120px] truncate text-[#062E3B]">{user?.name}</span>
               </div>
 
               <button
                 onClick={handleLogout}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#3B262F] bg-[#1E161A] hover:bg-[#2E1E24] text-xs font-medium text-[#EBB369] hover:text-[#F9EDE4] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#B2E2EB] bg-[#FFFFFF] hover:bg-[#DDF2F5] text-xs font-medium text-[#062E3B] hover:text-[#0083A0] transition-colors cursor-pointer shadow-sm"
                 title="Logout"
               >
                 <LogOut className="w-3.5 h-3.5" />
@@ -86,14 +86,14 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className="text-xs font-semibold text-[#EBB369]/80 hover:text-[#F9EDE4] transition-colors px-2 py-1"
+                className="text-xs font-semibold text-[#062E3B] hover:text-[#0083A0] transition-colors px-2 py-1"
               >
                 Log in
               </Link>
 
               <Link
                 to="/register"
-                className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#EBB369] via-[#E09363] to-[#C87D82] hover:opacity-90 active:scale-[0.98] text-[#140F12] text-xs font-bold shadow-md shadow-[#140F12]/60 transition-all hover:scale-[1.02]"
+                className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#00A8CC] to-[#20B2AA] hover:opacity-95 text-white text-xs font-bold shadow-md shadow-[#00A8CC]/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 Sign up
               </Link>

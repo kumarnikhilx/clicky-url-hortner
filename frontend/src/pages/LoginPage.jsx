@@ -42,16 +42,16 @@ const LoginPage = () => {
 
   return (
     <main className="min-h-[calc(100vh-5rem)] flex items-center justify-center p-4 py-8">
-      <div className="w-full max-w-md p-6 sm:p-8 rounded-2xl border border-[#3B262F] bg-[#1E161A]/90 backdrop-blur-xl shadow-2xl shadow-[#140F12]/60">
+      <div className="w-full max-w-md p-6 sm:p-8 rounded-2xl border border-[#B2E2EB] bg-[#FFFFFF]/95 backdrop-blur-xl shadow-2xl shadow-[#00A8CC]/10">
         {/* Header */}
         <div className="text-center mb-6">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#2B1F24] border border-[#3B262F] text-[#EBB369] mb-3 shadow-inner">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#DDF2F5] border border-[#B2E2EB] text-[#0083A0] mb-3 shadow-inner">
             <LogIn className="w-6 h-6" />
           </div>
-          <h1 className="font-editorial text-2xl sm:text-3xl font-semibold text-[#F9EDE4] tracking-tight">
+          <h1 className="font-editorial text-2xl sm:text-3xl font-bold text-[#062E3B] tracking-tight">
             Welcome back
           </h1>
-          <p className="text-xs sm:text-sm text-[#EBB369]/80 mt-1">
+          <p className="text-xs sm:text-sm text-[#4A7A85] font-medium mt-1">
             Sign in to your Clicky account
           </p>
         </div>
@@ -59,7 +59,7 @@ const LoginPage = () => {
         {/* Form */}
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-[#F9EDE4] mb-1.5" htmlFor="login-email">
+            <label className="block text-xs font-bold text-[#062E3B] mb-1.5" htmlFor="login-email">
               Email address
             </label>
             <input
@@ -68,14 +68,14 @@ const LoginPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#3B262F] bg-[#2B1F24] text-[#F9EDE4] text-sm outline-none focus:border-[#EBB369] focus:ring-2 focus:ring-[#EBB369]/20 transition-all placeholder:text-[#EBB369]/40 font-normal"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#B2E2EB] bg-[#FFFFFF] text-[#062E3B] text-sm outline-none focus:border-[#00A8CC] focus:ring-2 focus:ring-[#00A8CC]/20 transition-all placeholder:text-[#5E9EA8] font-medium shadow-sm"
               disabled={loading}
               required
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#F9EDE4] mb-1.5" htmlFor="login-password">
+            <label className="block text-xs font-bold text-[#062E3B] mb-1.5" htmlFor="login-password">
               Password
             </label>
             <div className="relative">
@@ -85,13 +85,13 @@ const LoginPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#3B262F] bg-[#2B1F24] text-[#F9EDE4] text-sm outline-none focus:border-[#EBB369] focus:ring-2 focus:ring-[#EBB369]/20 transition-all placeholder:text-[#EBB369]/40 font-normal"
+                className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#B2E2EB] bg-[#FFFFFF] text-[#062E3B] text-sm outline-none focus:border-[#00A8CC] focus:ring-2 focus:ring-[#00A8CC]/20 transition-all placeholder:text-[#5E9EA8] font-medium shadow-sm"
                 disabled={loading}
                 required
               />
               <button
                 type="button"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#EBB369]/60 hover:text-[#F9EDE4] transition-colors cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#5E9EA8] hover:text-[#062E3B] transition-colors cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex={-1}
               >
@@ -103,17 +103,17 @@ const LoginPage = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-gradient-to-r from-[#EBB369] via-[#E09363] to-[#C87D82] hover:opacity-95 text-[#140F12] text-xs font-bold shadow-md shadow-[#140F12]/50 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-gradient-to-r from-[#00A8CC] to-[#20B2AA] hover:opacity-95 text-white text-xs font-bold shadow-md shadow-[#00A8CC]/25 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 cursor-pointer"
           >
-            {loading ? <Loader2 className="w-4 h-4 animate-spin text-[#140F12]" /> : null}
+            {loading ? <Loader2 className="w-4 h-4 animate-spin text-white" /> : null}
             <span>{loading ? 'Logging in...' : 'Sign In'}</span>
           </button>
         </form>
 
         {/* Footer Link */}
-        <p className="text-center text-xs text-[#EBB369]/80 mt-6">
+        <p className="text-center text-xs text-[#4A7A85] font-medium mt-6">
           Don&apos;t have an account?{' '}
-          <Link to="/register" className="text-[#EBB369] hover:text-[#F9EDE4] font-semibold transition-colors">
+          <Link to="/register" className="text-[#0083A0] hover:text-[#005C70] font-bold transition-colors">
             Sign up
           </Link>
         </p>

@@ -37,24 +37,24 @@ const HomePage = () => {
   return (
     <main className="min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center px-4 py-8 sm:py-12">
       <div className="w-full max-w-2xl text-center flex flex-col items-center my-auto">
-        {/* Badge with sunset gold lightning */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#3B262F] bg-[#1E161A]/80 text-[#F9EDE4] text-[11px] font-semibold tracking-widest uppercase mb-6 shadow-md shadow-[#140F12]/50">
-          <Zap className="w-3.5 h-3.5 text-[#EBB369] fill-[#EBB369]" />
+        {/* Badge with cyan lightning */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#B2E2EB] bg-[#FFFFFF] text-[#062E3B] text-[11px] font-bold tracking-widest uppercase mb-6 shadow-sm shadow-[#00A8CC]/15">
+          <Zap className="w-3.5 h-3.5 text-[#00A8CC] fill-[#00A8CC]" />
           <span>Fast, Free & Simple</span>
         </div>
 
-        {/* Editorial Serif Heading in warm sunset gold/terracotta/dusty rose glow */}
-        <h1 className="font-editorial text-4xl sm:text-6xl font-medium tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#F0C06A] via-[#E09363] to-[#C87D82] mb-3 leading-tight drop-shadow-[0_0_30px_rgba(235,179,105,0.25)]">
+        {/* Editorial Serif Heading in crisp dark ocean cyan */}
+        <h1 className="font-editorial text-4xl sm:text-6xl font-bold tracking-tight text-[#062E3B] mb-3 leading-tight drop-shadow-sm">
           Shorten your reach.
         </h1>
 
         {/* Subtitle */}
-        <p className="text-sm sm:text-base text-[#EBB369]/80 max-w-lg mb-8 font-normal leading-relaxed">
+        <p className="text-sm sm:text-base text-[#4A7A85] max-w-lg mb-8 font-medium leading-relaxed">
           A quiet space for your digital connections.
         </p>
 
         {/* Main Card Container */}
-        <div className="w-full p-6 sm:p-8 rounded-2xl border border-[#3B262F] bg-[#1E161A]/90 backdrop-blur-xl shadow-2xl shadow-[#140F12]/60 mb-8 text-left">
+        <div className="w-full p-6 sm:p-8 rounded-2xl border border-[#B2E2EB] bg-[#FFFFFF]/95 backdrop-blur-xl shadow-xl shadow-[#00A8CC]/10 mb-8 text-left">
           <UrlForm onUrlCreated={handleUrlCreated} />
         </div>
 
@@ -63,14 +63,14 @@ const HomePage = () => {
           <div className="w-full text-left mt-1">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <History className="w-4 h-4 text-[#EBB369]" />
-                <h2 className="text-xs font-bold text-[#F9EDE4] uppercase tracking-widest">
+                <History className="w-4 h-4 text-[#0083A0]" />
+                <h2 className="text-xs font-bold text-[#062E3B] uppercase tracking-widest">
                   Recent Links
                 </h2>
               </div>
               <Link
                 to="/history"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-[#EBB369] hover:text-[#F9EDE4] transition-colors"
+                className="inline-flex items-center gap-1 text-xs font-bold text-[#0083A0] hover:text-[#005C70] transition-colors"
               >
                 <span>View all</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -81,19 +81,19 @@ const HomePage = () => {
           </div>
         ) : (
           /* Bottom 3 Feature Pills */
-          <div className="flex items-center justify-center gap-4 sm:gap-6 flex-wrap text-xs text-[#EBB369]/70 font-medium">
-            <div className="flex items-center gap-1.5 hover:text-[#F9EDE4] transition-colors">
-              <Lock className="w-3.5 h-3.5 text-[#E09363]" />
+          <div className="flex items-center justify-center gap-4 sm:gap-6 flex-wrap text-xs text-[#062E3B] font-semibold">
+            <div className="flex items-center gap-1.5 hover:text-[#0083A0] transition-colors">
+              <Lock className="w-3.5 h-3.5 text-[#00A8CC]" />
               <span>Private</span>
             </div>
-            <span className="text-[#3B262F]">•</span>
-            <div className="flex items-center gap-1.5 hover:text-[#F9EDE4] transition-colors">
-              <InfinityIcon className="w-3.5 h-3.5 text-[#EBB369]" />
+            <span className="text-[#B2E2EB]">•</span>
+            <div className="flex items-center gap-1.5 hover:text-[#0083A0] transition-colors">
+              <InfinityIcon className="w-3.5 h-3.5 text-[#0083A0]" />
               <span>Persistent</span>
             </div>
-            <span className="text-[#3B262F]">•</span>
-            <div className="flex items-center gap-1.5 hover:text-[#F9EDE4] transition-colors">
-              <Target className="w-3.5 h-3.5 text-[#C87D82]" />
+            <span className="text-[#B2E2EB]">•</span>
+            <div className="flex items-center gap-1.5 hover:text-[#0083A0] transition-colors">
+              <Target className="w-3.5 h-3.5 text-[#00A8CC]" />
               <span>Precise</span>
             </div>
           </div>

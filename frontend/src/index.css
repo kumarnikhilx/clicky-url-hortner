@@ -2,10 +2,10 @@
 
 @layer base {
   body {
-    background-color: #140F12;
-    background-image: radial-gradient(circle, rgba(235, 179, 105, 0.18) 1.5px, transparent 1.5px);
+    background-color: #EBF6F8;
+    background-image: radial-gradient(circle, rgba(0, 168, 204, 0.18) 1.5px, transparent 1.5px);
     background-size: 28px 28px;
-    color: #F9EDE4;
+    color: #062E3B;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -15,13 +15,13 @@
     font-family: 'Playfair Display', Georgia, Cambria, serif;
   }
 
-  /* Prevent browser autofill from turning inputs white */
+  /* Prevent browser autofill from breaking styles */
   input:-webkit-autofill,
   input:-webkit-autofill:hover, 
   input:-webkit-autofill:focus, 
   input:-webkit-autofill:active {
     -webkit-background-clip: text;
-    -webkit-text-fill-color: #F9EDE4 !important;
+    -webkit-text-fill-color: #062E3B !important;
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: inset 0 0 20px 20px transparent !important;
   }

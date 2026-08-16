@@ -13,17 +13,17 @@ const ShortUrlResult = ({ shortUrl }) => {
   };
 
   return (
-    <div className="mt-4 p-4 rounded-xl border border-[#3B262F] bg-[#1E161A]/95 backdrop-blur-sm shadow-lg shadow-[#140F12]/50 animate-in fade-in slide-in-from-top-2 duration-300">
+    <div className="mt-4 p-4 rounded-xl border border-[#B2E2EB] bg-[#FFFFFF] shadow-lg shadow-[#00A8CC]/10 animate-in fade-in slide-in-from-top-2 duration-300">
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-[#EBB369] mb-1">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-[#0083A0] mb-1">
             Shortened Link
           </p>
           <a
             href={shortUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-[#F9EDE4] hover:text-[#EBB369] transition-colors truncate block font-mono"
+            className="text-sm font-semibold text-[#062E3B] hover:text-[#00A8CC] transition-colors truncate block font-mono"
           >
             {shortUrl}
           </a>
@@ -34,19 +34,19 @@ const ShortUrlResult = ({ shortUrl }) => {
             onClick={handleCopy}
             className={`p-2 rounded-lg border text-sm font-medium transition-all cursor-pointer ${
               copied
-                ? 'bg-[#3B262F] border-[#EBB369] text-[#F9EDE4] shadow-sm shadow-[#EBB369]/20'
-                : 'bg-[#2B1F24] border-[#3B262F] text-[#F9EDE4] hover:bg-[#3B262F] hover:text-white'
+                ? 'bg-[#DDF2F5] border-[#00A8CC] text-[#0083A0] shadow-sm'
+                : 'bg-[#E3F4F7] border-[#B2E2EB] text-[#062E3B] hover:bg-[#DDF2F5] hover:text-[#0083A0]'
             }`}
             title="Copy to clipboard"
           >
-            {copied ? <CheckCheck className="w-4 h-4 text-[#EBB369]" /> : <Copy className="w-4 h-4 text-[#EBB369]" />}
+            {copied ? <CheckCheck className="w-4 h-4 text-[#0083A0]" /> : <Copy className="w-4 h-4 text-[#0083A0]" />}
           </button>
 
           <a
             href={shortUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-lg border border-[#3B262F] bg-[#2B1F24] text-[#EBB369] hover:bg-[#3B262F] hover:text-white transition-all"
+            className="p-2 rounded-lg border border-[#B2E2EB] bg-[#E3F4F7] text-[#0083A0] hover:bg-[#DDF2F5] hover:text-[#005C70] transition-all shadow-sm"
             title="Open in new tab"
           >
             <ExternalLink className="w-4 h-4" />
