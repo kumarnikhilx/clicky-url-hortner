@@ -48,16 +48,16 @@ const RegisterPage = () => {
 
   return (
     <main className="min-h-[calc(100vh-5rem)] flex items-center justify-center p-4 py-8">
-      <div className="w-full max-w-md p-6 sm:p-8 rounded-2xl border border-slate-800/80 bg-[#0e121c]/90 backdrop-blur-xl shadow-2xl">
+      <div className="w-full max-w-md p-6 sm:p-8 rounded-2xl border border-[#3B262F] bg-[#1E161A]/90 backdrop-blur-xl shadow-2xl shadow-[#140F12]/60">
         {/* Header */}
         <div className="text-center mb-6">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 text-indigo-300 mb-3 shadow-inner">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#2B1F24] border border-[#3B262F] text-[#EBB369] mb-3 shadow-inner">
             <UserPlus className="w-6 h-6" />
           </div>
-          <h1 className="font-editorial text-2xl sm:text-3xl font-semibold text-slate-100 tracking-tight">
+          <h1 className="font-editorial text-2xl sm:text-3xl font-semibold text-[#F9EDE4] tracking-tight">
             Create an account
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-[#EBB369]/80 mt-1">
             Start shortening and tracking links with Clicky
           </p>
         </div>
@@ -65,7 +65,7 @@ const RegisterPage = () => {
         {/* Form */}
         <form onSubmit={handleRegister} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5" htmlFor="register-name">
+            <label className="block text-xs font-semibold text-[#F9EDE4] mb-1.5" htmlFor="register-name">
               Full name
             </label>
             <input
@@ -74,14 +74,14 @@ const RegisterPage = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Alex Doe"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-800 bg-[#141925] text-slate-100 text-sm outline-none focus:border-indigo-400/50 focus:ring-2 focus:ring-indigo-400/10 transition-all placeholder:text-slate-500 font-normal"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#3B262F] bg-[#2B1F24] text-[#F9EDE4] text-sm outline-none focus:border-[#EBB369] focus:ring-2 focus:ring-[#EBB369]/20 transition-all placeholder:text-[#EBB369]/40 font-normal"
               disabled={loading}
               required
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5" htmlFor="register-email">
+            <label className="block text-xs font-semibold text-[#F9EDE4] mb-1.5" htmlFor="register-email">
               Email address
             </label>
             <input
@@ -90,14 +90,14 @@ const RegisterPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-800 bg-[#141925] text-slate-100 text-sm outline-none focus:border-indigo-400/50 focus:ring-2 focus:ring-indigo-400/10 transition-all placeholder:text-slate-500 font-normal"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#3B262F] bg-[#2B1F24] text-[#F9EDE4] text-sm outline-none focus:border-[#EBB369] focus:ring-2 focus:ring-[#EBB369]/20 transition-all placeholder:text-[#EBB369]/40 font-normal"
               disabled={loading}
               required
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5" htmlFor="register-password">
+            <label className="block text-xs font-semibold text-[#F9EDE4] mb-1.5" htmlFor="register-password">
               Password
             </label>
             <div className="relative">
@@ -107,13 +107,13 @@ const RegisterPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="At least 6 characters"
-                className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-slate-800 bg-[#141925] text-slate-100 text-sm outline-none focus:border-indigo-400/50 focus:ring-2 focus:ring-indigo-400/10 transition-all placeholder:text-slate-500 font-normal"
+                className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-[#3B262F] bg-[#2B1F24] text-[#F9EDE4] text-sm outline-none focus:border-[#EBB369] focus:ring-2 focus:ring-[#EBB369]/20 transition-all placeholder:text-[#EBB369]/40 font-normal"
                 disabled={loading}
                 required
               />
               <button
                 type="button"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-200 transition-colors cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#EBB369]/60 hover:text-[#F9EDE4] transition-colors cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex={-1}
               >
@@ -125,17 +125,17 @@ const RegisterPage = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-[#c7d2fe] hover:bg-[#b4c6fc] active:bg-[#a5b4fc] text-[#0b0e14] text-xs font-bold shadow-md transition-all disabled:opacity-50 cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-gradient-to-r from-[#EBB369] via-[#E09363] to-[#C87D82] hover:opacity-95 text-[#140F12] text-xs font-bold shadow-md shadow-[#140F12]/50 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 cursor-pointer"
           >
-            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+            {loading ? <Loader2 className="w-4 h-4 animate-spin text-[#140F12]" /> : null}
             <span>{loading ? 'Creating account...' : 'Create Account'}</span>
           </button>
         </form>
 
         {/* Footer Link */}
-        <p className="text-center text-xs text-slate-400 mt-6">
+        <p className="text-center text-xs text-[#EBB369]/80 mt-6">
           Already have an account?{' '}
-          <Link to="/login" className="text-indigo-300 hover:text-indigo-200 font-semibold transition-colors">
+          <Link to="/login" className="text-[#EBB369] hover:text-[#F9EDE4] font-semibold transition-colors">
             Log in
           </Link>
         </p>
